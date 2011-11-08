@@ -1,7 +1,9 @@
 ######################################################################
-#########  algorithm to solve bridge crossing problem in R ############
+#########  algorithm to solve bridge and torch problem in R ############
 ######################################################################
-# see http://en.wikipedia.org/wiki/Bridge_and_torch_problem
+# code written by jedidiah francis, 24/06/11.
+#
+# for full description of the problem see http://en.wikipedia.org/wiki/Bridge_and_torch_problem
 
 #Preamble 
 #say the crossing times are t1, t2, t3, ... , tN-1, tN
@@ -33,7 +35,6 @@
 #+{1,20}
 #crossing time = 63!
 
-# jedidiah.francis@gmail.com 24/06/11
 ######################################################################
 ######################################################################
 
@@ -86,7 +87,8 @@ if(l>=4){
 	
 			p1 = sort(c(p1,p2[1])); #let smallest time in p2 cross over back to initial position and sort at same time
 			tot.time = tot.time + p2[1];  #increment total time
-			p2 = p2[-1];}                                                                                                          else{	    p2 = sort(c(p2,p1[c(1,l)])); #let t1 & t2 cross bridge into p2, and sort at same time
+			p2 = p2[-1];}    else{
+				    p2 = sort(c(p2,p1[c(1,l)])); #let t1 & t2 cross bridge into p2, and sort at same time
 			tot.time = tot.time + max(p1[c(1,l)]);  #increment total time
 			p1 = p1[c(-1,-l)];
 		
